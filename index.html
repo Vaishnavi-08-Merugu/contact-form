@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Contact Form</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: Arial, sans-serif; padding: 24px; max-width:720px; margin:auto; }
+    input, textarea { width:100%; padding:8px; margin:6px 0 12px; box-sizing:border-box; }
+    label { font-weight:600; }
+    button { padding:10px 16px; }
+  </style>
+</head>
+<body>
+  <h1>Contact Us</h1>
+
+  <form id="contactForm" action="#" method="post">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" required />
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required />
+
+    <label for="mobile">Mobile Number</label>
+    <input id="mobile" name="mobile" type="tel" pattern="[0-9+ -]{6,20}" required />
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" rows="5" required></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
