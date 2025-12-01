@@ -1,23 +1,29 @@
 pipeline {
-  agent any
+    agent any
 
-  triggers {
-    pollSCM('H/2 * * * *')   // example: poll every 2 minutes (customize)
-  }
-
-  stages {
-    stage('Checkout') {
-      steps {
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']],
-          userRemoteConfigs: [[url: 'https://github.com/Vaishnavi-08-Merugu/contact-form.git']]])
-      }
+    triggers {
+        pollSCM('H/5 * * * *') // polls every 5 minutes for changes
     }
 
-    stage('Run Ansible (WSL)') {
-      steps {
-        // run ansible-playbook in WSL (Ubuntu)
-        bat 'wsl -u vaishu8 -- ansible-playbook -i ansible/inventory ansible/deploy.yml --connection=ssh -v'
-      }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/<your-username>/contact-form.git'
+            }
+        }
+
+        stage('Build / Test') {
+            steps {
+                echo "No build required for static HTML"
+                // If you had scripts, build/test steps would go here
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deployment step will go here"
+                // Later you can add Ansible/other deployment commands
+            }
+        }
     }
-  }
 }
